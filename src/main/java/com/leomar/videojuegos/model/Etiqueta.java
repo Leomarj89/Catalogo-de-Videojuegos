@@ -1,16 +1,9 @@
 package com.leomar.videojuegos.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString(exclude = "usuarios")
 @Entity
 @Table(name = "etiqueta")
 public class Etiqueta {
@@ -24,5 +17,39 @@ public class Etiqueta {
     private String nombreEtiqueta;
 
     @ManyToMany(mappedBy = "etiquetas", fetch = FetchType.LAZY)
-    private Set<Usuario> usuarios = new HashSet<>();
+    private Set<Juego> juegos = new HashSet<>();
+
+    public Etiqueta() {
+    }
+
+    public Etiqueta(Integer id, String nombreEtiqueta) {
+        this.id = id;
+        this.nombreEtiqueta = nombreEtiqueta;
+    }
+
+    // ========= Getters / Setters =========
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombreEtiqueta() {
+        return nombreEtiqueta;
+    }
+
+    public void setNombreEtiqueta(String nombreEtiqueta) {
+        this.nombreEtiqueta = nombreEtiqueta;
+    }
+
+    public Set<Juego> getJuegos() {
+        return juegos;
+    }
+
+    public void setJuegos(Set<Juego> juegos) {
+        this.juegos = juegos;
+    }
 }

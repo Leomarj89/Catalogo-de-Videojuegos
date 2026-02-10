@@ -3,6 +3,7 @@ package com.leomar.videojuegos.controller;
 import com.leomar.videojuegos.dto.JuegoDTO;
 import com.leomar.videojuegos.service.JuegoService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,13 @@ public class JuegoController {
         this.service = service;
     }
 
+    // ========= CRUD básico =========
+
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public JuegoDTO crear(@Valid @RequestBody JuegoDTO dto) {
-        return service.guardar(dto);
+        // No tocamos el id, si viene null -> crear
+        return service.crear(dto);
     }
 
     @GetMapping
@@ -32,12 +37,20 @@ public class JuegoController {
         return service.buscarPorId(id);
     }
 
+    @PutMapping("/{id}")
+    public JuegoDTO actualizar(@PathVariable Integer id,
+                               @Valid @RequestBody JuegoDTO dto) {
+        // No seteamos el id en el DTO, usamos el de la URL
+        return service.actualizar(id, dto);
+    }
+
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Integer id) {
         service.eliminar(id);
     }
 
-    // --------- Endpoints mejorados ---------
+    // ========= Endpoints de búsqueda =========
 
     // Buscar por parte del título
     @GetMapping("/buscar")
@@ -51,7 +64,7 @@ public class JuegoController {
         return service.buscarPorGenero(genero);
     }
 
-    // Filtrar por plataforma
+    // Filtrar por plataforma (PC, PS4, etc.)
     @GetMapping("/plataforma/{plataforma}")
     public List<JuegoDTO> buscarPorPlataforma(@PathVariable String plataforma) {
         return service.buscarPorPlataforma(plataforma);

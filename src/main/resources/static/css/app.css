@@ -1,0 +1,410 @@
+/* =========================
+   ESTILO GLOBAL
+   ========================= */
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    margin: 0;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Pill reutilizable (index + dashboard) */
+.pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: #111827;
+    color: #6ee7b7;
+    border: 1px solid #064e3b;
+    margin-bottom: 12px;
+}
+
+/* Subtítulo reutilizable */
+.subtitulo {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #9ca3af;
+}
+
+/* =========================
+   INDEX
+   ========================= */
+
+.index-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 24px;
+}
+
+.index-card {
+    background: #020617;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1f2937;
+}
+
+.index-card h1 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.index-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.index-menu-link {
+    flex: 1 1 220px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.index-menu-item {
+    background: #111827;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid #1f2937;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease, background 0.15s ease;
+}
+
+.index-menu-item h2 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+}
+
+.index-menu-item p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.index-menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.6);
+    border-color: #22c55e;
+    background: #020617;
+}
+
+.index-footer {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #6b7280;
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    .index-card {
+        padding: 20px;
+    }
+
+    .index-card h1 {
+        font-size: 22px;
+    }
+}
+
+/* =========================
+   DASHBOARD
+   ========================= */
+
+.dashboard-body {
+    background: #020617;
+    color: #e5e7eb;
+}
+
+.dash-container {
+    max-width: 1100px;
+}
+
+/* Header del dashboard */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Secciones */
+.section {
+    margin-bottom: 32px;
+}
+
+/* Tabla dentro de tarjeta */
+.card-table {
+    background: #020617;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid #1f2937;
+    box-shadow: 0 16px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.card-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.card-table th,
+.card-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #1f2937;
+    font-size: 14px;
+}
+
+.card-table th {
+    text-align: left;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.card-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Header de sección (para el título Top N) */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* Grid de tarjetas de juegos */
+.cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+/* Tarjeta de juego */
+.card-game {
+    background: #020617;
+    border-radius: 16px;
+    border: 1px solid #1f2937;
+    overflow: hidden;
+    box-shadow: 0 18px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card-link {
+    display: block;
+    color: inherit;
+}
+
+/* Hover general */
+.card-game:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+    border-color: #22c55e;
+}
+
+/* Portada con overlay hover */
+.card-cover-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+    background: #0b1120;
+}
+
+.card-cover {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+/* Zoom suave al hacer hover */
+.card-game:hover .card-cover {
+    transform: scale(1.05);
+}
+
+/* Overlay de hover "Ver detalle" */
+.card-hover {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.1));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card-game:hover .card-hover {
+    opacity: 1;
+}
+
+.card-hover span {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 6px 12px;
+    border-radius: 9999px;
+    border: 1px solid #22c55e;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #bbf7d0;
+}
+
+/* Placeholder cuando no hay portada */
+.card-cover.placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* Contenido de la tarjeta */
+.card-body {
+    padding: 14px 14px 16px;
+}
+
+.card-body h3 {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+}
+
+.card-body .meta {
+    margin: 0;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.card-body .meta .label {
+    color: #6b7280;
+    margin-right: 6px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+}
+
+/* Responsive pequeño */
+@media (max-width: 640px) {
+    .dash-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* =========================
+   DETALLE DE JUEGO
+   ========================= */
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.detail-cover .card-cover {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+}
+
+.detail-info h1 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.detail-info p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ===== Fondo general oscuro reutilizable ===== */
+.bg-slate {
+    background: #0f172a;
+}
+
+/* ===== Detalle de juego ===== */
+.detail-card {
+    border-radius: 16px;
+    border: 1px solid #1f2937;
+}
+
+/* Contenedor de la portada: cuadrado/rectángulo controlado */
+.detail-cover-wrapper {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 3 / 4; /* forma tipo carátula */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #020617;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagen de portada */
+.detail-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder cuando no hay portada */
+.detail-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem;
+    background: radial-gradient(circle at 30% 20%, #1f2937, #020617);
+}
+
+/* Tabla de detalle: que la primera columna tenga ancho razonable */
+.detail-table th {
+    width: 32%;
+    white-space: nowrap;
+}
+.detail-table td {
+    font-size: 0.95rem;
+}
