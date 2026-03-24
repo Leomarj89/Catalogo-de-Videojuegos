@@ -54,8 +54,8 @@
             <select id="plataforma" name="plataforma" class="form-select form-select-sm">
                 <option value="">Todas las plataformas</option>
                 <option th:each="plat : ${plataformas}"
-                        th:value="${plat}"
-                        th:text="${plat}"
+                        th:value="${plat.name}"
+                        th:text="${plat.label}"
                         th:selected="${plataformaSeleccionada} == ${plat.name()}">
                 </option>
             </select>

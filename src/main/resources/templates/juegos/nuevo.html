@@ -102,8 +102,8 @@
                             <option value="">Selecciona una plataforma</option>
                             <!-- Cargar todas las constantes del enum Plataforma -->
                             <option th:each="plat : ${T(com.leomar.videojuegos.model.Plataforma).values()}"
-                                    th:value="${plat}"
-                                    th:text="${plat}">
+                                    th:value="${plat.name}"
+                                    th:text="${plat.label}">
                             </option>
                         </select>
                     </div>
