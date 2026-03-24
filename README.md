@@ -110,6 +110,18 @@ src/
 
 Proyecto en desarrollo activo. Se continúan agregando mejoras y nuevas funcionalidades.
 
+## Posibles mejoras futuras
+
+
+* Integración con una API externa de videojuegos
+* Carga automática de información de portadas y metadatos
+* Autenticación de usuarios
+* Paginación en listados
+* Ordenamiento avanzado
+* Mejoras visuales del dashboard
+* Exportación de datos
+* Pruebas unitarias e integración más completas
+
 ## Autor
 
 Leomar Contreras
